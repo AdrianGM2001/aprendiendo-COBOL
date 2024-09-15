@@ -1,0 +1,23 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CALCULAR-PI.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 TERMINOS PIC 9(8).
+       01 DEN-N PIC 9(9).
+       01 DEN-I PIC 9(9).
+       01 VALOR-PI PIC 9V9(15) VALUE 0.
+       01 SIGNO-4-TERM-I PIC S9 VALUE 4.
+       PROCEDURE DIVISION.
+       INICIO.
+           DISPLAY "Introduce el numero de terminos de la serie".
+           ACCEPT TERMINOS.
+           COMPUTE DEN-N = 2 * TERMINOS + 1.
+           PERFORM CALC VARYING DEN-I FROM 1 BY 2 UNTIL DEN-I >= DEN-N.
+           DISPLAY VALOR-PI.
+           STOP RUN.
+
+       CALC.
+           COMPUTE VALOR-PI = VALOR-PI + SIGNO-4-TERM-I / DEN-I.
+           COMPUTE SIGNO-4-TERM-I = -SIGNO-4-TERM-I.
+       END PROGRAM CALCULAR-PI.
